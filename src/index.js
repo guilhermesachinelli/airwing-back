@@ -3,7 +3,7 @@ const express = require('express');
 const usersRoutes = require('./routes/usersRoutes');
 
 const app = express();
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use('/',usersRoutes);
 app.listen(port, () => {

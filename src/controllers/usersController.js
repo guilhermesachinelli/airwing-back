@@ -1,5 +1,4 @@
-const pool= require('../config/dbConfig')
-
+const pool= require('../config/dbConfig');
 async function getUsers(req, res) {
   try {
     const result = await pool.query('SELECT * FROM users');
@@ -24,9 +23,9 @@ async function getUserById(req, res) {
   }
 }
 async function createUser(req, res) {
-  const { username, datanascimento, email, cpf, telephone, sexo , senha } = req.body;
-  const query = 'INSERT INTO users (username, datanascimento, email, cpf, telephone, sexo, senha) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
-  const values = [username, datanascimento, email, cpf, telephone, sexo, senha];
+  const { username, datanascimento,idade, email, cpf, telephone, sexo , senha } = req.body;
+  const query = 'INSERT INTO users (username, datanascimento, idade, email, cpf, telephone, sexo, senha) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *'
+  const values = [username, datanascimento,idade, email, cpf, telephone, sexo, senha];
   try {
     const result = await pool.query(query, values);
     res.status(201).json(result.rows[0]);
